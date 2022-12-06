@@ -1,0 +1,26 @@
+1. Run a container as the root user
+  1.1. Start a container with the below command
+      "sudo podman run --rm --name asroot -it registry.access.redhat.com/ubi8:latest /bin/bash
+      "whoami" should output root
+      "id" should output uid=0(root)
+  1.2. Start a sleep process
+      "sleep 1000"
+  1.3. On a new terminal, run ps
+      'sudo ps -ef | grep "sleep 1000"'
+      Should output as running as root
+  1.4. Exit the container
+      CTRL+C below the sleep command
+      "exit"
+2. Run a container as a regular user
+  2.1. Start another container
+      "podman run --rm --name asuser -it reegistry.access.redhat.com/ubi8:latest /bin/bash"
+      "whoami" should output root
+      "id" shoudl output uid=0(root)
+  2.2. Start a sleep process
+      "sleep 2000"
+  2.3. On a new terminal, run ps
+      'sudo ps -ef | grep "sleep 2000" | grep -v grep'
+      Should output as running as student
+  2.4. Exit the container
+      CTRL+C below the sleep command
+      "exit"
