@@ -1,0 +1,11 @@
+1. Use an image on quay with a specific tag to start a container in the background.
+   Forward a port on the host to a port on the container.
+   1.1. "podman run -d -p 8080:80 --name httpd-basic quay.io/redhattraining/httpd-parent:2.4"
+2. Test to see if the server is running on the container.
+   2.1 "curl http://localhost:8080"
+3. Customize the container to display a "Hello World!" message.
+   3.1. "podman exec -t httpd-basic /bin/bash"
+   3.2. "ls -la /var/www/html/index.html"
+   3.3. 'echo "Hello World" > /var/www/html/index.html'
+   3.4. "exit"
+        "curl http://localhost:8080"
